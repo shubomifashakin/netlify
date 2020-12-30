@@ -1,50 +1,77 @@
-import React, { Component } from "react"
-import logo from "./logo.svg"
-import "./App.css"
+import React,{Component} from "react";
+import "./css/styles.css";
 
-class LambdaDemo extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { loading: false, msg: null }
+
+class Application extends Component{
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+        money: "",
+        percentage:"",
+        tip:"0"
+    }
+
+    this.moneyChange = this.moneyChange.bind(this);
   }
 
-  handleClick = api => e => {
-    e.preventDefault()
-
-    this.setState({ loading: true })
-    fetch("/.netlify/functions/" + api)
-      .then(response => response.json())
-      .then(json => this.setState({ loading: false, msg: json.msg }))
+  calculate = () => {
+    let {money, percentage, tip} = this.state;
+    if(money !== "" && percentage !== ""){
+        tip  = eval(String((money * percentage)/100));
+        this.setState({tip, money:"", percentage:""})
+    }
   }
 
-  render() {
-    const { loading, msg } = this.state
+  moneyChange = (e)=> {
+    this.setState({money: e.target.value});  
+  }
 
-    return (
-      <p>
-        <button onClick={this.handleClick("hello")}>{loading ? "Loading..." : "Call Lambda"}</button>
-        <button onClick={this.handleClick("async-dadjoke")}>{loading ? "Loading..." : "Call Async Lambda"}</button>
-        <br />
-        <span>{msg}</span>
-      </p>
+  mode(){
+    var x = document.body;
+     x.classList.toggle("darkmode");
+
+     var y = document.getElementById("calc");
+     y.classList.toggle("darkmode2")
+ }
+
+  percentageChange = (e) => {
+    this.setState({percentage: e.target.value});
+  }
+
+  render(){
+    return(
+            <div id="container">
+
+                  <button onClick={()=>this.mode()}>Mode</button>
+
+                
+                <div className="calc-container" id="calc">
+
+                  <div className="inner-calc">
+                    <h2>Tip Calculator</h2>
+
+                    <div className="tip"><span className="tip-container">&#8358;{this.state.tip}</span></div> 
+
+                  <div className="fieldGroup">
+                    <label className="label">Amount Spent</label>
+                        <div className="space"> &#8358; &nbsp;<input type="text" className="inputField money"value={this.state.money}  onChange={this.moneyChange} placeholder="Enter value" /></div>
+                  </div>
+
+                  <div className="fieldGroup">
+                    <label className="label">Tip Percent</label>
+                    <input className="percentage" type="range" step="10" min="10" max="50"   onChange={this.percentageChange}  ></input>&nbsp;<output id="num">{this.state.percentage}%</output>
+                  </div>
+
+
+                  <button type="submit" onClick={()=> this.calculate()} className="calculate">Calculate</button>
+
+                  </div>
+                  </div>
+            </div>
     )
   }
 }
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <LambdaDemo />
-        </header>
-      </div>
-    )
-  }
-}
-
-export default App
+export default Application;

@@ -1,0 +1,156 @@
+body{
+    background:white;
+    height:100%;
+    width:100%;
+    padding:0;
+    margin:0;
+    color:#5c5a5a;
+
+}
+
+.darkmode{
+    background:black;
+    height:100%;
+    width:100%;
+    padding:0;
+    margin:0;
+    color:white;
+    
+}
+
+
+h2{
+    font-family:"inprimis",Arial, Helvetica, sans-serif;
+    font-size:20px;
+    text-align:center;
+    color:#A141E7;
+    text-transform:uppercase;
+    letter-spacing: 2px;
+    font-size:28px;
+}
+
+.calc-container{
+    margin:0 auto;  
+    height:600px;
+    width:500px;
+    position:relative;
+    top:50px;
+    border-radius:15px;
+    transition:2s;
+}
+
+.inner-calc{
+    padding:20px 20px;
+    box-sizing:border-box;
+}
+
+.tip{
+    background:#f4f2f5;
+    height:100px;
+    width:100%;
+    text-align:center;
+    position:relative;
+    border-radius:5px;
+    font-family:"tw cen mt";
+    color:#A141E7
+}
+
+.tip-container{
+    position:relative;
+    top:30px;
+    font-size:45px;
+}
+
+.label{
+    font-size:25px;
+    font-family:"inprimis";
+}
+
+.inputField{
+    border:solid 2px #A141E7;
+    height:50px;
+    width:150px;
+    padding:15px;
+    box-sizing: border-box;
+    border-radius:5px;
+    font-family:"inprimis";
+    font-weight:lighter;
+    font-size:20px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    border-radius: 1.3px;
+  }
+  
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #f4f2f5;
+  }
+  
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    background: #f4f2f5;
+    border-radius: 1.3px;
+   
+  }
+  
+  input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+  }
+
+  #num{
+      font-family:"inprimis";
+      font-size:22px;
+  }
+
+div.space{
+    margin-left:24px;
+    display:inline;
+}
+
+.percentage{
+    margin-left:65px;
+    background:none;
+}
+
+.fieldGroup{
+    display:block;
+    margin-top:50px;
+}
+
+.calculate{
+    background:#A141E7;
+    border:none;
+    font-size:25px;
+    font-family:"inprimis";
+    color:white;
+    height:50px;
+    width:100%;
+    border-radius:5px;
+    text-transform:uppercase;
+    letter-spacing: 2px;
+    margin-top:50px;
+    transition:.5s;
+}
+
+.calculate:hover{
+    color:black;
+    box-shadow:0 0 8px #A141E7;
+}
+
+
+@media all and (max-width:1080px){
+    .calc-container{
+        width:auto;
+        height:500px;
+    }
+}
